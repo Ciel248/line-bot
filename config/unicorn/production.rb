@@ -7,7 +7,7 @@ timeout 60
 listen 3000
 
 stdout_path "#{@app_path}/log/unicorn.log"
-stderr_path "#{@app_path}/log/unicorn.err"
+stderr_path "#{@app_path}/log/unicorn.log"
 
 before_fork do |server, worker|
   ENV["BUNDLE_GEMFILE"] = File.expend_path("Gemfile", ENV["RAILS_ROOT"])

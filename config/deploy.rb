@@ -2,6 +2,7 @@ set :application, "line-bot"
 set :repo_url, "https://github.com/Ciel248/line-bot.git"
 set :branch, "master"
 set :deploy_to, "/home/app/approot/line-bot"
+set :deploy_user, "app"
 set :scm, :git
 set :linked_dirs, %w[
   bin
@@ -13,6 +14,8 @@ set :linked_dirs, %w[
 ]
 set :default_env, { path: "/home/app/.rbenv/shims:/home/app/.rbenv/bin:$PATH" }
 set :keep_releases, 5
+
+set :rbenv_ruby, "2.3.0"
 
 after "deploy:publishing", "deploy:restart"
 namespace :deploy do
