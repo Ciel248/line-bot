@@ -4,4 +4,3 @@
 vendor/bundle
 config/application.yml
 tmp
-log
