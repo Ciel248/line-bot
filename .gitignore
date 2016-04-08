@@ -1,0 +1,6 @@
+*.swp
+.envrc
+.bundle
+vendor/bundle
+tmp
+log
