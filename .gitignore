@@ -2,5 +2,6 @@
 .envrc
 .bundle
 vendor/bundle
+config/application.yml
 tmp
 log
