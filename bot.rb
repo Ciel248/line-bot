@@ -1,11 +1,11 @@
 require "sinatra"
 require "json"
 require "faraday"
-require "settingslogic"
+# require "settingslogic"
 
-class Settings < Settingslogic
-  source File.join(File.dirname(__FILE__), "config", "application.yml")
-end
+#class Settings < Settingslogic
+#  source File.join(File.dirname(__FILE__), "config", "application.yml")
+#end
 
 LINEBOT_API_HOST = "https://trialbot-api.line.me"
 TO_CHANNEL = "1383378250" # FIXED_VALUE
@@ -35,9 +35,12 @@ class BotApp < Sinatra::Base
       conn.post do |req|
         req.url "/v1/events"
         req.headers["Content-type"]                 = "application/json; charset=UTF-8"
-        req.headers["X-Line-ChannelID"]             = Settings.linebot.channel_id,
-        req.headers["X-Line-ChannelSecret"]         = Settings.linebot.channel_secret,
-        req.headers["X-Line-Trusted-User-With-ACL"] = Settings.linebot.mid,
+        #req.headers["X-Line-ChannelID"]             = Settings.linebot.channel_id,
+        #req.headers["X-Line-ChannelSecret"]         = Settings.linebot.channel_secret,
+        #req.headers["X-Line-Trusted-User-With-ACL"] = Settings.linebot.mid,
+        req.headers["X-Line-ChannelID"]             = ENV[CHANNEL_ID],
+        req.headers["X-Line-ChannelSecret"]         = ENV[CHANNNEL_SECRET],
+        req.headers["X-Line-Trusted-User-With-ACL"] = ENV[MID],
         req.body = body
       end
     end
